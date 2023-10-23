@@ -1,13 +1,13 @@
-import express from "express";
-import { colors, users } from "./data";
 import cors from "cors";
-import { userController } from "./controller/user.controller";
-import { colorController } from "./controller/color.controller";
-import { userRouter } from "./router/user.router";
+import express from "express";
 import { colorRouter } from "./router/color.router";
+import { userRouter } from "./router/user.router";
+import dotenv from 'dotenv';
 
-const PORT = 5000;
-const CLIENT_URL = "http://localhost:3000";
+dotenv.config();
+
+const PORT = Number(process.env.PORT);
+const CLIENT_URL = process.env.CLIENT_URL;
 const app = express();
 
 app.use(
