@@ -1,10 +1,14 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import cors from "cors";
 import express from "express";
 import { colorRouter } from "./router/color.router";
 import { userRouter } from "./router/user.router";
-import dotenv from 'dotenv';
+import { connect } from './utils/db';
 
-dotenv.config();
+console.log('LOG2', process.env.DB_NAME)
+connect();
 
 const PORT = Number(process.env.PORT);
 const CLIENT_URL = process.env.CLIENT_URL;
