@@ -1,23 +1,19 @@
-import { User } from "../type";
-
-export const users: User[] = [
-  { id: 1, name: "Joe Biden", carColorId: 5 },
-  { id: 2, name: "Elon Musk", carColorId: 4 },
-  { id: 3, name: "Pan Roman", carColorId: 2 },
-];
+import { User } from "../model";
 
 const getAll = () => {
-  return users;
+  return User.findAll({
+    order: ["name"],
+  });
 };
 
 const getById = (userId: number) => {
-  return users.find((v) => v.id === userId);
+  return User.findByPk(userId);
 };
 
-const addOne = (user: Omit<User, "id">) => {
-  const userToSave = { ...user, id: users.length + 1 };
-  users.push(userToSave);
-  return userToSave;
+const addOne = (user: Pick<User, "name" | "carColorId">) => {
+  return User.create(user).catch((error) => {
+    console.log("Unable to create User", error);
+  });
 };
 
 export const userService = { getAll, getById, addOne };
