@@ -1,8 +1,10 @@
 import { ControllerAction } from "./controller.types";
 import { userService } from "../service/user.service";
+import { parseParams } from "./controller.helpers";
 
 const getAll: ControllerAction = async (req, res) => {
-  res.send(await userService.getAll());
+  const params = req.query;
+  res.send(await userService.getAll(parseParams(params)));
 };
 
 const getOne: ControllerAction = async (req, res) => {

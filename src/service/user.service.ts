@@ -1,8 +1,18 @@
 import { User } from "../model";
+import { QueryParams } from "../type";
 
-const getAll = () => {
-  return User.findAll({
-    order: ["name"],
+const getAll = ({
+  perPage,
+  pageNumber,
+  order,
+  orderBy
+}: Required<QueryParams>) => {
+  return User.findAndCountAll({
+    limit: perPage,
+    offset: perPage * pageNumber,
+    order: [
+      [orderBy, order]
+    ]
   });
 };
 

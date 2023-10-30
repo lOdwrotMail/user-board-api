@@ -1,10 +1,6 @@
-export interface User {
-  id: number;
-  carColorId: number;
-  name: string;
-}
-
-export interface Color {
-  id: number;
-  name: string;
-}
+export type QueryParams = {
+  perPage?: number;
+  pageNumber?: number;
+  order?: 'ASC' | 'DESC',
+  orderBy?: string;
+};
