@@ -16,6 +16,9 @@ export class User extends Model {
   name!: string;
 
   @Column
+  nickName!: string;
+  
+  @Column
   surname!: string;
 
   @ForeignKey(() => Color)
